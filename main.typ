@@ -13,7 +13,7 @@
 
 = 1
 
-1
+1 @lorem
 
 == 2
 
@@ -34,3 +34,8 @@
 ==== 4.3
 
 1 - 2 - 3 - 4.3
+
+= sources
+
+#set text(size: 10pt)
+#bibliography(title: none, "main.bib")

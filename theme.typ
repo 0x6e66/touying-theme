@@ -83,7 +83,7 @@
         for i in range(1, 9) {
           let current_heading = utils.current-heading(level: i)
           if current_heading != none {
-            "/" + current_heading.body
+            "/" + lower(current_heading.body)
           }
         }
       }
@@ -143,6 +143,7 @@
   body,
 ) = {
   set text(size: 20pt, font: "Hack Nerd Font Mono")
+  set cite(style: "institute-of-physics-numeric")
 
   show: touying-slides.with(
     config-page(
