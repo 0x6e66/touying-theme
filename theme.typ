@@ -79,11 +79,15 @@
       context {
         show: components.cell.with(inset: .7em)
         set text(fill: luma(40%), size: .7em)
+
         "~"
+
         for i in range(1, 9) {
           let current_heading = utils.current-heading(level: i)
           if current_heading != none {
-            "/" + lower(current_heading.body)
+            let h = current_heading.body.text.replace(" ", "_")
+            h = lower(h)
+            "/" + h
           }
         }
       }
