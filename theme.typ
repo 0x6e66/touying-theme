@@ -127,6 +127,36 @@
   },
 )
 
+#let new-section-slide(
+  config: (:),
+  level: 1,
+  numbered: false,
+  body,
+) = touying-slide-wrapper(self => {
+  let slide-body = {
+    set std.align(horizon)
+    show: pad.with(20%)
+    set text(size: 1.5em, fill: self.colors.primary, weight: "bold")
+    stack(
+      dir: ttb,
+      spacing: .65em,
+      utils.display-current-heading(level: level, numbered: numbered),
+      block(
+        height: 2pt,
+        width: 100%,
+        spacing: 0pt,
+        components.progress-bar(
+          height: 2pt,
+          self.colors.primary,
+          self.colors.primary-light,
+        ),
+      ),
+    )
+    body
+  }
+  touying-slide(self: self, config: config, slide-body)
+})
+
 #let theme(
   aspect-ratio: "16-9",
   progress-bar: true,
@@ -156,7 +186,11 @@
       // footer-descent: 0em,
       margin: (top: 3em, bottom: 1.5em, x: 2em),
     ),
-    config-common(slide-fn: slide, slide-level: 99),
+    config-common(
+      slide-fn: slide,
+      new-section-slide-fn: new-section-slide,
+      slide-level: 99,
+    ),
     config-methods(alert: utils.alert-with-primary-color),
     config-colors(
       primary: rgb("#04364a"),
