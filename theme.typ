@@ -85,7 +85,16 @@
         for i in range(1, 9) {
           let current_heading = utils.current-heading(level: i)
           if current_heading != none {
-            let h = current_heading.body.text.replace(" ", "_")
+            let h = ""
+
+            if current_heading.body.has("text") {
+              h = current_heading.body.text.replace(" ", "_")
+            } else {
+              h = current_heading.body
+            }
+
+            assert(h != "")
+
             h = lower(h)
             "/" + h
           }
